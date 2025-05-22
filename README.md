@@ -17,7 +17,7 @@ This repository provides a setup for running ephemeral GitHub Actions self-hoste
         - Set event to individual event "workflow jobs"
         - Set a webhook secret
     - Create the workflow .yml file in .github/workflows
-        - Set "runs-on: [self-hosted, nomad]
+        - Set `runs-on: [self-hosted, nomad]`
     - Create a GitHub personal access token (PAT) with read/write access to the repo
 
 ### HashiCorp Vault
