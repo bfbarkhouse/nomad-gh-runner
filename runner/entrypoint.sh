@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e
-RUNNER_NAME="$(hostname)-$NOMAD_ALLOC_ID"
+RUNNER_NAME="$(hostname)-$NOMAD_JOB_ID"
 CONFIGURED=false
 
 if [ ! -f ".runner" ]; then
