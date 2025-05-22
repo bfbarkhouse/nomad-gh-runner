@@ -48,6 +48,6 @@ This repository provides a setup for running ephemeral GitHub Actions self-hoste
 - Verify the jobs are running and healthy
 
 ### GitHub Actions Workflow
-- Push a commit to your GitHub repo
+- Push a new commit to your GitHub repo
 - Your Actions workflow should run and execute on the Nomad runner
 
