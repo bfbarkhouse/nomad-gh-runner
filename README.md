@@ -12,11 +12,11 @@ This repository provides a setup for running ephemeral GitHub Actions self-hoste
 ### GitHub
 - Create your GitHub repo for the code and Actions workflow you want to execute on the Nomad runner. Example: https://github.com/bfbarkhouse/gha-demo
     - Create a GitHub repo webhook:
-        - Set the payload URL to the publically available endpoint of the webhook server running on Nomad. We are using Traefik, Consul and AWS ALB to expose the webhook to the internet.
-        - Set the content type to "application/json"
-        - Set event to individual event "workflow jobs"
+        - Set the `payload URL` to the publically available endpoint of the webhook server running on Nomad. We are using Traefik, Consul and AWS ALB to expose the webhook to the internet.
+        - Set the content type to `application/json`
+        - Set event to individual event `workflow jobs`
         - Set a webhook secret
-    - Create the workflow .yml file in .github/workflows
+    - Create the workflow .yml file in `.github/workflows`
         - Set `runs-on: [self-hosted, nomad]`
     - Create a GitHub personal access token (PAT) with read/write access to the repo
 
