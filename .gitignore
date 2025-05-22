@@ -3,4 +3,5 @@ docker-cmds.txt
 /runner/zDockerfile
 /runner/zstart.sh
 TODO
+/packer*
 
