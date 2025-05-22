@@ -4,7 +4,7 @@ This repository provides a setup for running ephemeral GitHub Actions self-hoste
 
 ## Structure
 
-- `runner/`: Dockerfile, startup script and Nomad job for the runner
+- `runner/`: Dockerfile, entrypoint wrapper script and Nomad job for the runner
 - `webhook/`: Dockerfile, webhook server application, and Nomad job for the webhook
 
 ## Setup Overview
@@ -36,11 +36,11 @@ This repository provides a setup for running ephemeral GitHub Actions self-hoste
            }`
 
 ### Stage container images
-- Build `/runner/Dockerfile` on a Linux x86_64 host
-- Build `/webhook/Dockerfile` on a Linux x86_64 host
-- Push these images to your registry of choice
+- Build `/runner/Dockerfile` on the architecture of your choice
+- Build `/webhook/Dockerfile` on the architecture of your choice
+- Push these images to a registry of your choice
 - Update `/runner/github_runner.nomad.hcl` to point to the runner image with any required authentication options
-- Update `/webhook/github_webhook.nomad.hcl` to point to the runner image with any required authentication options
+- Update `/webhook/github_webhook.nomad.hcl` to point to the webhook image with any required authentication options
 
 ### HashiCorp Nomad
 - Submit job `/runner/github_runner.nomad.hcl`

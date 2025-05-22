@@ -1,5 +1,5 @@
 # Use a slim Python base image
-FROM --platform=linux/amd64 python:3.11-slim AS build_amd64
+FROM python:3.11-slim
 ENV PYTHONUNBUFFERED=1
 
 # Install system dependencies and Nomad CLI

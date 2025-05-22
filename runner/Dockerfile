@@ -1,24 +1,15 @@
-FROM ubuntu:22.04
+FROM ghcr.io/actions/actions-runner:latest
 
-# Install dependencies
-RUN apt-get update && \
-    DEBIAN_FRONTEND=noninteractive apt-get install -y \
-    curl git jq unzip sudo ca-certificates && \
-    update-ca-certificates && \
-    useradd -m runner
+USER root
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
 
-WORKDIR /runner
-
-# Install GitHub Actions runner
-ENV RUNNER_VERSION=2.324.0
-RUN curl -L -o actions-runner.tar.gz https://github.com/actions/runner/releases/download/v${RUNNER_VERSION}/actions-runner-linux-x64-${RUNNER_VERSION}.tar.gz && \
-    tar xzf actions-runner.tar.gz && \
-    rm actions-runner.tar.gz && \
-    ./bin/installdependencies.sh
-
-COPY start.sh /runner/start.sh
-RUN chmod +x /runner/start.sh
-RUN chown -R runner /runner
+#Install other dependencies
+# RUN apt-get update && \
+#     curl -fsSL https://apt.releases.hashicorp.com/gpg | gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg && \
+#     echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(. /etc/os-release && echo "$VERSION_CODENAME") main" | tee /etc/apt/sources.list.d/hashicorp.list && \
+#     apt-get update && \
+#     apt-get install -y packer
 
 USER runner
-ENTRYPOINT ["/runner/start.sh"]
+ENTRYPOINT ["/entrypoint.sh"]
