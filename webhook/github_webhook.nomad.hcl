@@ -38,6 +38,7 @@ job "webhook-github-runner" {
           "traefik.http.routers.webhook.middlewares=webhook",
         ]
         address = "${attr.unique.platform.aws.public-ipv4}"
+        #TODO: health check
       }
 
       resources {

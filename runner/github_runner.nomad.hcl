@@ -14,6 +14,8 @@ job "github-runner" {
 
   group "runner" {
     count = 1
+  
+  #TODO: Add Consul service and health check
 
     task "runner" {
       driver = "docker"
