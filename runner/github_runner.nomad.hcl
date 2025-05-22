@@ -1,17 +1,15 @@
 job "github-runner" {
   datacenters = ["dc1"]
-  type = "batch"
-  node_pool = "x86"
+  type        = "batch"
+  node_pool   = "x86"
 
 
   parameterized {
-    #enabled = true
     meta_required = [
       "github_url",
       "runner_token",
       "runner_labels"
     ]
-    #payload = true
   }
 
   group "runner" {
@@ -25,9 +23,9 @@ job "github-runner" {
       }
 
       env {
-        GITHUB_URL     = "${NOMAD_META_github_url}"
-        RUNNER_TOKEN   = "${NOMAD_META_runner_token}"
-        RUNNER_LABELS  = "${NOMAD_META_runner_labels}"
+        GITHUB_URL    = "${NOMAD_META_github_url}"
+        RUNNER_TOKEN  = "${NOMAD_META_runner_token}"
+        RUNNER_LABELS = "${NOMAD_META_runner_labels}"
       }
 
       resources {

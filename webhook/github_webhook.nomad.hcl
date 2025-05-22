@@ -1,7 +1,7 @@
 job "webhook-github-runner" {
   datacenters = ["dc1"]
   type        = "service"
-  node_pool = "x86"
+  node_pool   = "x86"
 
   group "webhook-handler" {
     count = 1
@@ -21,10 +21,10 @@ job "webhook-github-runner" {
       }
 
       env {
-        GITHUB_ORG            = "bfbarkhouse"
-        GITHUB_REPO           = "gha-demo"
-        NOMAD_JOB_TEMPLATE    = "github-runner"
-        PORT                  = "8080"
+        GITHUB_ORG         = "bfbarkhouse"
+        GITHUB_REPO        = "gha-demo"
+        NOMAD_JOB_TEMPLATE = "github-runner"
+        PORT               = "8080"
       }
 
       service {
