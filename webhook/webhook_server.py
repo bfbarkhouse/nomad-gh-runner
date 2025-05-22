@@ -14,7 +14,7 @@ NOMAD_JOB_TEMPLATE = os.environ["NOMAD_JOB_TEMPLATE"] # Path to Nomad job templa
 
 def fetch_registration_token():
     import requests
-    #If using a GitHub organization url = f"https://api.github.com/orgs/{GITHUB_ORG}/actions/runners/registration-token"
+    #If using a GitHub organization: url = f"https://api.github.com/orgs/{GITHUB_ORG}/actions/runners/registration-token"
     url = f"https://api.github.com/repos/{GITHUB_ORG}/{GITHUB_REPO}/actions/runners/registration-token"
     headers = {
         "Authorization": f"token {GITHUB_PAT}",
@@ -29,7 +29,7 @@ def fetch_registration_token():
 def trigger_runner_job(token: str):
     cmd = [
         "nomad", "job", "dispatch", 
-        #If using a GitHub Organization "-meta", f"github_url=https://github.com/orgs/{GITHUB_ORG}/{GITHUB_REPO}",
+        #If using a GitHub Organization: "-meta", f"github_url=https://github.com/orgs/{GITHUB_ORG}/{GITHUB_REPO}",
         "-meta", f"github_url=https://github.com/{GITHUB_ORG}/{GITHUB_REPO}",
         "-meta", f"runner_token={token}", 
         "-meta", "runner_labels=nomad",
