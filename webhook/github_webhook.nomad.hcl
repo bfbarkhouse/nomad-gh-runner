@@ -57,7 +57,7 @@ export NOMAD_TOKEN="{{ with secret "kv/data/github" }}{{ .Data.data.nomad_token 
 export NOMAD_ADDR="{{ with secret "kv/data/github" }}{{ .Data.data.nomad_addr }}{{ end }}"
 EOF
 
-        destination = "secrets/env.sh"
+        destination = "secrets/env"
         env         = true
       }
     }
