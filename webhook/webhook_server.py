@@ -29,7 +29,7 @@ def fetch_registration_token():
 def trigger_runner_job(token: str):
     cmd = [
         "nomad", "job", "dispatch", 
-        #If using a GitHub Organization "-var", f"github_url=https://github.com/orgs/{GITHUB_ORG}/{GITHUB_REPO}",
+        #If using a GitHub Organization "-meta", f"github_url=https://github.com/orgs/{GITHUB_ORG}/{GITHUB_REPO}",
         "-meta", f"github_url=https://github.com/{GITHUB_ORG}/{GITHUB_REPO}",
         "-meta", f"runner_token={token}", 
         "-meta", "runner_labels=nomad",
